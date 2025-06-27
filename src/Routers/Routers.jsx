@@ -11,6 +11,7 @@ import Eee from "../pages/EEE/Eee";
 import English from "../pages/English/English";
 import Islamic from "../pages/Islamic/Islamic";
 import Law from "../pages/Laws/Law";
+import BookDetails from "../pages/BookDetails/BookDetails";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ export const router = createBrowserRouter([
         {
             path: "/law",
             element:<Law></Law>
+        },
+        {
+            path: "/book/:id",
+            element:<BookDetails></BookDetails>,
+            loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
         },
         {
           path: "/about",
