@@ -12,6 +12,8 @@ import English from "../pages/English/English";
 import Islamic from "../pages/Islamic/Islamic";
 import Law from "../pages/Laws/Law";
 import BookDetails from "../pages/BookDetails/BookDetails";
+import Information from "../pages/Information/Information";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ export const router = createBrowserRouter([
         {
           path: "/about",
           element:<About></About>
+        },
+        {
+          path: "/information",
+          element:<Information></Information>
+        },
+        {
+          path: "/contact",
+          element:<Contact></Contact>
         },
     ]
   },

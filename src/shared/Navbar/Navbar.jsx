@@ -6,12 +6,12 @@ export default function Navbar() {
 
     const navItems = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
-        <li>Thesis</li>
-        <li>Journal</li>
+        <li><NavLink>Thesis</NavLink></li>
+        <li><NavLink>Journal</NavLink></li>
         <li><NavLink to={"/about"}>About</NavLink></li>
-        <li>Information</li>
-        <li>Help</li>
-        <li>Librarian</li>
+        <li><NavLink to={"/information"}>Information</NavLink></li>
+        <li><NavLink to={"/contact"}>Contact</NavLink></li>
+        <li><NavLink>Librarian</NavLink></li>
     </>
 
     return (
@@ -33,7 +33,7 @@ export default function Navbar() {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 space-x-5">
+                <ul className="menu menu-horizontal text-lg font-semibold px-1 space-x-2">
                     {navItems}
                 </ul>
             </div>

@@ -5,7 +5,7 @@ import Footer from '../shared/Footer/Footer'
 
 export default function MainLayout() {
     return (
-        <div>
+        <div className='roboto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
