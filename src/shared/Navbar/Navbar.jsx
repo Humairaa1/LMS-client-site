@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../assets/logo.png'    
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Navbar() {
 
@@ -38,7 +38,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Login</a>
+                <Link to={'/login'} className='btn btn-success text-white'>Login</Link>
             </div>
         </div>
     )

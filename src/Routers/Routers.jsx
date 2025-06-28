@@ -14,6 +14,8 @@ import Law from "../pages/Laws/Law";
 import BookDetails from "../pages/BookDetails/BookDetails";
 import Information from "../pages/Information/Information";
 import Contact from "../pages/Contact/Contact";
+import Login from "../pages/Login/Login";
+import Registration from "../pages/Registration/Registration";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
         {
           path: "/contact",
           element:<Contact></Contact>
+        },
+        {
+          path: "/login",
+          element:<Login></Login>
+        },
+        {
+          path: "/register",
+          element:<Registration></Registration>
         },
     ]
   },
