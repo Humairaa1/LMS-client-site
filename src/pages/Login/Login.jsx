@@ -1,18 +1,27 @@
 import Lottie from 'lottie-react';
 import lottieLogin from '../../../public/login.json';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 export default function Login() {
+
+    const { loginUser } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
-        // Here you can add your login logic, like calling an API
-        console.log("Email:", email);
-        console.log("Password:", password);
+        
+        loginUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                toast.success('Login successful!')})
+            .catch(error => {
+                console.error(error.message);
+            });
     }
 
     return (

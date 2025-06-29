@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from '../../assets/logo.png'    
 import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../../Provider/AuthProvider'
+import { toast } from 'react-toastify';
 
 export default function Navbar() {
+
+    const {user ,logoutUser}= useContext(AuthContext);
+
+    const handleLogout = () => {
+        logoutUser()
+        .then(()=>{
+            console.log('Logout successful');
+            toast.success('Logout successful');
+        })
+    }
 
     const navItems = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
@@ -38,7 +50,13 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/login'} className='btn btn-success text-white'>Login</Link>
+                {
+                    user?
+                    <button onClick={handleLogout} className='btn'>Logout</button>
+                    :
+                    <Link to={'/login'} className='btn btn-success text-white'>Login</Link>
+                }
+                
             </div>
         </div>
     )

@@ -23,7 +23,7 @@ export default function Bba() {
       ></UseCategoryPageTitle>
 
       {/* search  */}
-      <UseSearch search={search} setSearch={setSearch}></UseSearch>s
+      <UseSearch search={search} setSearch={setSearch}></UseSearch>
 
       <div className='w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10'>
         {loading
