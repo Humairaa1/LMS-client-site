@@ -2,24 +2,39 @@ import Lottie from 'lottie-react';
 import lottieRegister from '../../../public/registration.json';
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 export default function Registration() {
 
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 console.log(result.user);
+                toast.success('Registration successful!');
+                navigate('/');
+                reset();
+                updateUserProfile(data.name)
+                    .then(() => {
+                        console.log('User profile updated');
+
+                    })
+                    .catch(error => {
+                        console.error('Error updating user profile:', error.message);
+                    });
+
             })
             .catch(error => {
                 console.error(error.message);

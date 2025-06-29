@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import lottieLogin from '../../../public/login.json';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { toast } from 'react-toastify';
@@ -9,6 +9,11 @@ export default function Login() {
 
     const { loginUser } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+    
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -18,6 +23,7 @@ export default function Login() {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user);
+                navigate(from, { replace: true });
                 toast.success('Login successful!')})
             .catch(error => {
                 console.error(error.message);
