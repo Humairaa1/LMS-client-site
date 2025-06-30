@@ -17,6 +17,7 @@ import Contact from "../pages/Contact/Contact";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
+import MyRequest from "../MyRequest/MyRequest";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
         {
           path: "/contact",
           element:<Contact></Contact>
+        },
+        {
+          path: "/request",
+          element:<MyRequest></MyRequest>
         },
         {
           path: "/login",
