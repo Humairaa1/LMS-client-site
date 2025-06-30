@@ -7,6 +7,8 @@ import UseBorrowBooks from '../../Hooks/UseBorrowBooks';
 
 export default function Navbar() {
 
+    const admin = true;
+
     const { user, logoutUser } = useContext(AuthContext);
     const [borrowedBooks] = UseBorrowBooks();
     // console.log(borrowedBooks.lenght);
@@ -33,11 +35,20 @@ export default function Navbar() {
         <div>
 
             {/* topbar  */}
-            <div className='flex justify-between bg-gray-100 px-3'>
+            <div className='flex justify-between items-center bg-gray-100 px-3 py-1'>
                 <div className='flex items-center list-none font-semibold gap-3'>
                     <li><NavLink to={"/about"}>About</NavLink></li>
                     <li><NavLink to={"/information"}>Information</NavLink></li>
                     <li><NavLink to={"/contact"}>Contact</NavLink></li>
+                </div>
+
+                <div>
+                    {
+                    admin ?
+                    <Link to={'/dashboard'} className="font-semibold">Admin Dashboard</Link>
+                    :
+                    ""
+                }
                 </div>
 
                 <div>

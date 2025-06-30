@@ -5,6 +5,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import UseAxiosPublic from '../../Hooks/UseAxiosPublic';
 
 export default function Registration() {
 
@@ -17,18 +18,32 @@ export default function Registration() {
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = UseAxiosPublic();
 
     const onSubmit = (data) => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 console.log(result.user);
-                toast.success('Registration successful!');
-                navigate('/');
-                reset();
+                // toast.success('Registration successful!');
+                // navigate('/');
+                // reset();
                 updateUserProfile(data.name)
                     .then(() => {
-                        console.log('User profile updated');
+                        const user = {
+                            name: data.name,
+                            email: data.email,
+                        }
+                        axiosPublic.post('/users', user)
+                            .then(response => {
+                                console.log(response.data);
+                                if (response.data.insertedId) {
+                                    toast.success('Registration successful!');
+                                    navigate('/');
+                                    reset();
+                                }
+                            })
+                        // console.log('User profile updated');
 
                     })
                     .catch(error => {
@@ -41,22 +56,6 @@ export default function Registration() {
             });
     }
 
-    // const handleRegister = (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const name = form.name.value;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-
-    //     createUser(email, password)
-    //         .then(result => {
-    //             console.log(result.user);
-    //         })
-    //         .catch(error => {   
-    //             console.error(error.message);
-    //         });
-    //     form.reset();
-    // }
 
     return (
         <div>

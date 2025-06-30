@@ -25,7 +25,7 @@ export default function AuthProvider({ children }) {
     }
 
     const updateUserProfile = (name) => {
-        updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: name
         })
     }

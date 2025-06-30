@@ -18,6 +18,9 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import MyRequest from "../MyRequest/MyRequest";
+import DashboardLayout from "../Layout/DashboardLayout";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import AllUser from "../pages/AllUser/AllUser";
 
 export const router = createBrowserRouter([
   {
@@ -87,4 +90,18 @@ export const router = createBrowserRouter([
         },
     ]
   },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+      {
+        path: "/dashboard",
+        element:<Dashboard></Dashboard>
+      },
+      {
+        path: "/dashboard/all-users",
+        element:<AllUser></AllUser>
+      }
+    ]
+  }
 ]);
