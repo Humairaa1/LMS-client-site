@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import UseBorrowBooks from '../../Hooks/UseBorrowBooks';
 
 
 export default function BookDetails() {
@@ -12,10 +13,11 @@ export default function BookDetails() {
     const { image, name, author, details, genre, link, quantity, _id } = book;
 
     const [requestSent, setRequestSent] = useState(false);
+    const [, refetch] = UseBorrowBooks();
 
 
-    const handleBorrowBook = (book) => {
-        console.log('Borrowing book:', book);
+    const handleBorrowBook = () => {
+        // console.log('Borrowing book:', book);
         const bookRequest = {
             bookId: _id,
             email: user.email,
@@ -28,6 +30,7 @@ export default function BookDetails() {
                 if (res.data.insertedId) {
                     toast.success('Request to borrow book sent successfully!');
                     setRequestSent(true);
+                    refetch(); // Refetch borrowed books to update the list
                 }
             })
 
@@ -54,7 +57,7 @@ export default function BookDetails() {
                             ? <button className='btn btn-disabled'>Not Available</button>
                             : requestSent
                                 ? <button className='btn btn-info btn-disabled'>Request Sent</button>
-                                : <button onClick={() => handleBorrowBook(book)} className="btn btn-success text-white">Add to Borrow</button>
+                                : <button onClick={handleBorrowBook} className="btn btn-success text-white">Add to Borrow</button>
                     }
 
                     <a href={link} target='_blank' className="btn btn-success text-white">Download</a>

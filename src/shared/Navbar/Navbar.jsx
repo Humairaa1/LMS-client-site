@@ -3,10 +3,13 @@ import logo from '../../assets/logo.png'
 import { Link, NavLink } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { toast } from 'react-toastify';
+import UseBorrowBooks from '../../Hooks/UseBorrowBooks';
 
 export default function Navbar() {
 
     const { user, logoutUser } = useContext(AuthContext);
+    const [borrowedBooks] = UseBorrowBooks();
+    // console.log(borrowedBooks.lenght);
 
     const handleLogout = () => {
         logoutUser()
@@ -51,7 +54,7 @@ export default function Navbar() {
             </div>
             <div className="navbar-end gap-2">
                 <button className="btn">
-                    Request <div className="badge badge-sm">+0</div>
+                    Request <div className="badge badge-sm">+{borrowedBooks.length}</div>
                 </button>
                 {
                     user ?
