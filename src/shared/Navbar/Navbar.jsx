@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/information"}>Information</NavLink></li>
         <li><NavLink to={"/contact"}>Contact</NavLink></li> */}
-        <li><NavLink>Librarian</NavLink></li>
+        <li><NavLink to={'/librarian'}>Librarian</NavLink></li>
     </>
 
     return (

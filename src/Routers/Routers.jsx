@@ -21,6 +21,7 @@ import MyRequest from "../MyRequest/MyRequest";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUser from "../pages/AllUser/AllUser";
+import Librarian from "../pages/Librarian/Librarian";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
         {
           path: "/contact",
           element:<Contact></Contact>
+        },
+        {
+          path: "/librarian",
+          element:<Librarian></Librarian>
         },
         {
           path: "/request",
