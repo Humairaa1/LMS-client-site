@@ -11,7 +11,7 @@ export default function DashboardLayout() {
         {/* navbar  */}
         <div className='space-y-2 list-none font-semibold'>
           <li className='flex items-center gap-2'><FaHome></FaHome><NavLink to={'/'}>Admin Home</NavLink></li>
-          <li className='flex items-center gap-2'><FaAddressBook /><NavLink>Add Book</NavLink></li>
+          <li className='flex items-center gap-2'><FaAddressBook /><NavLink to={'/dashboard/add-books'}>Add Book</NavLink></li>
           <li className='flex items-center gap-2'><FaBook></FaBook><NavLink>Manage Book</NavLink></li>
           <li className='flex items-center gap-2'><FaUsers></FaUsers><NavLink to={'/dashboard/all-users'}>All Users</NavLink></li>
         </div>

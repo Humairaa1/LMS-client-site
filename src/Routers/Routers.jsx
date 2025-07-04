@@ -22,6 +22,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllUser from "../pages/AllUser/AllUser";
 import Librarian from "../pages/Librarian/Librarian";
+import AddBooks from "../pages/AddBooks/AddBooks";
 
 export const router = createBrowserRouter([
   {
@@ -106,7 +107,11 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/all-users",
         element:<AllUser></AllUser>
-      }
+      },
+      {
+        path: "/dashboard/add-books",
+        element:<AddBooks></AddBooks>
+      },
     ]
   }
 ]);
